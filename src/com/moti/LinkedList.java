@@ -2,8 +2,8 @@ package com.moti;
 
 public class LinkedList<T> {
 
-    Node<T> _head;
-    Node<T> _tail;
+    private Node<T> _head;
+    private Node<T> _tail;
 
     LinkedList() {
         _head = null;
