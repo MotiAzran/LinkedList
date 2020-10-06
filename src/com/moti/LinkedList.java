@@ -20,7 +20,13 @@ public class LinkedList<T> {
 
     public void add(T data) {
         Node<T> new_node = new Node<T>(data);
-        _tail.set_next(new_node);
+
+        if (null == _head) {
+            // first node in the list
+            _head = new_node;
+        } else {
+            _tail.set_next(new_node);
+        }
 
         _tail = new_node;
     }
@@ -43,7 +49,7 @@ public class LinkedList<T> {
         Node<T> current_node = _head;
         while (null != current_node) {
             result = result.concat(current_node.get_data().toString());
-            if (!_tail.equals(current_node)) {
+            if (_tail != current_node) {
                 result = result.concat(" -> ");
             }
 
