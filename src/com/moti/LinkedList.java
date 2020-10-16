@@ -1,60 +1,90 @@
 package com.moti;
 
+/**
+ * Linked list of type T
+ * @param <T> type of the list elements
+ */
 public class LinkedList<T> {
-
     private Node<T> _head;
     private Node<T> _tail;
 
-    LinkedList() {
+    /**
+     * Initialize an empty list
+     */
+    public LinkedList() {
         _head = null;
         _tail = null;
     }
 
-    public Node<T> get_head() {
+    /**
+     * Get list first node
+     * @return list first node
+     */
+    public Node<T> getHead() {
         return _head;
     }
 
-    public Node<T> get_tail() {
+    /**
+     * Get list last node
+     * @return list last node
+     */
+    public Node<T> getTail() {
         return _tail;
     }
 
+    /**
+     * Add new node at the end of
+     * the list
+     * @param data data of the node to add
+     */
     public void add(T data) {
-        Node<T> new_node = new Node<T>(data);
+        Node<T> newNode = new Node<T>(data);
 
         if (null == _head) {
             // first node in the list
-            _head = new_node;
+            _head = newNode;
         } else {
-            _tail.set_next(new_node);
+            _tail.setNext(newNode);
         }
 
-        _tail = new_node;
+        // Add the new node to end of the list
+        _tail = newNode;
     }
 
+    /**
+     * Remove the first node of the list
+     * @return first node data
+     * @throws EmptyListException thrown when the list is empty
+     */
     public T remove() throws EmptyListException {
         if (null == _head) {
+            // Empty list
             throw new EmptyListException();
         }
 
-        T head_data = _head.get_data();
+        T headData = _head.getData();
 
-        _head = _head.get_next();
+        // Remove list first node
+        _head = _head.getNext();
 
-        return head_data;
+        return headData;
     }
 
+    /**
+     * Get string representation of the list
+     * @return string representation of the list
+     */
     public String toString() {
         String result = "";
 
-        Node<T> current_node = _head;
-        while (null != current_node) {
-            result = result.concat(current_node.get_data().toString());
-            if (_tail != current_node) {
-                result = result.concat(" -> ");
-            }
+        Node<T> currentNode = _head;
+        while (null != currentNode) {
+            result = result.concat(currentNode.toString() + " -> ");
 
-            current_node = current_node.get_next();
+            currentNode = currentNode.getNext();
         }
+
+        result = result.concat("null");
 
         return result;
     }
