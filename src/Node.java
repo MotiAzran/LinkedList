@@ -1,5 +1,3 @@
-package com.moti;
-
 /**
  * Represent a list single node
  * @param <T> type of the node data

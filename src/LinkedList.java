@@ -1,5 +1,3 @@
-package com.moti;
-
 /**
  * Linked list of type T
  * @param <T> type of the list elements

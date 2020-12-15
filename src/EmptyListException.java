@@ -1,5 +1,3 @@
-package com.moti;
-
 /**
  * Exception that thrown when the user does
  * invalid operation on empty list
