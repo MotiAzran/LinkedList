@@ -3,8 +3,8 @@
  * @param <T> type of the node data
  */
 public class Node<T> {
-    private T _data;
-    private Node<T> _next;
+    private T data;
+    private Node<T> next;
 
     /**
      * Initialize the node with
@@ -22,8 +22,8 @@ public class Node<T> {
      * @param next the next node
      */
     public Node(T data, Node<T> next) {
-        _data = data;
-        _next = next;
+        this.data = data;
+        this.next = next;
     }
 
     /**
@@ -31,7 +31,7 @@ public class Node<T> {
      * @return node data
      */
     public T getData() {
-        return _data;
+        return data;
     }
 
     /**
@@ -39,7 +39,7 @@ public class Node<T> {
      * @param data node new data
      */
     public void setData(T data) {
-        _data = data;
+        this.data = data;
     }
 
     /**
@@ -47,7 +47,7 @@ public class Node<T> {
      * @return next node
      */
     public Node<T> getNext() {
-        return _next;
+        return next;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Node<T> {
      * @param next new next node
      */
     public void setNext(Node<T> next) {
-        _next = next;
+        this.next = next;
     }
 
     /**
@@ -63,6 +63,6 @@ public class Node<T> {
      * @return string representation of node
      */
     public String toString() {
-        return "(" + _data.toString() + ")";
+        return "(" + data + ")";
     }
 }

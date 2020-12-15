@@ -1,17 +1,19 @@
+import java.util.Iterator;
+
 /**
  * Linked list of type T
  * @param <T> type of the list elements
  */
-public class LinkedList<T> {
-    private Node<T> _head;
-    private Node<T> _tail;
+public class LinkedList<T> implements Iterable<T> {
+    private Node<T> head;
+    private Node<T> tail;
 
     /**
      * Initialize an empty list
      */
     public LinkedList() {
-        _head = null;
-        _tail = null;
+        head = null;
+        tail = null;
     }
 
     /**
@@ -19,7 +21,7 @@ public class LinkedList<T> {
      * @return list first node
      */
     public Node<T> getHead() {
-        return _head;
+        return head;
     }
 
     /**
@@ -27,7 +29,7 @@ public class LinkedList<T> {
      * @return list last node
      */
     public Node<T> getTail() {
-        return _tail;
+        return tail;
     }
 
     /**
@@ -38,15 +40,15 @@ public class LinkedList<T> {
     public void add(T data) {
         Node<T> newNode = new Node<T>(data);
 
-        if (null == _head) {
+        if (null == head) {
             // first node in the list
-            _head = newNode;
+            head = newNode;
         } else {
-            _tail.setNext(newNode);
+            tail.setNext(newNode);
         }
 
         // Add the new node to end of the list
-        _tail = newNode;
+        tail = newNode;
     }
 
     /**
@@ -55,15 +57,20 @@ public class LinkedList<T> {
      * @throws EmptyListException thrown when the list is empty
      */
     public T remove() throws EmptyListException {
-        if (null == _head) {
+        if (null == head) {
             // Empty list
             throw new EmptyListException();
         }
 
-        T headData = _head.getData();
+        T headData = head.getData();
 
         // Remove list first node
-        _head = _head.getNext();
+        head = head.getNext();
+
+        if (null == head) {
+            // The list is empty now, update the tail
+            tail = null;
+        }
 
         return headData;
     }
@@ -75,9 +82,9 @@ public class LinkedList<T> {
     public String toString() {
         String result = "";
 
-        Node<T> currentNode = _head;
+        Node<T> currentNode = head;
         while (null != currentNode) {
-            result = result.concat(currentNode.toString() + " -> ");
+            result = result.concat(currentNode + " -> ");
 
             currentNode = currentNode.getNext();
         }
@@ -85,5 +92,25 @@ public class LinkedList<T> {
         result = result.concat("null");
 
         return result;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            Node<T> currentNode = head;
+
+            @Override
+            public boolean hasNext() {
+                return null != currentNode;
+            }
+
+            @Override
+            public T next() {
+                T data = currentNode.getData();
+                currentNode = currentNode.getNext();
+
+                return data;
+            }
+        };
     }
 }

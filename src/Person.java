@@ -2,20 +2,20 @@
  * Represent a person
  */
 public class Person implements Comparable<Person> {
-    private String _name;
-    private String _id;
-    private int _birth_year;
+    private String name;
+    private String id;
+    private int birthYear;
 
     /**
      * Initialize person
      * @param name person name
      * @param id person ID
-     * @param birth_year person birth year
+     * @param birthYear person birth year
      */
-    public Person(String name, String id, int birth_year) {
-        _name = name;
-        _id = id;
-        _birth_year = birth_year;
+    public Person(String name, String id, int birthYear) {
+        this.name = name;
+        this.id = id;
+        this.birthYear = birthYear;
     }
 
     /**
@@ -23,7 +23,7 @@ public class Person implements Comparable<Person> {
      * @return string representation of person
      */
     public String toString() {
-        return String.format("%s - %s, Age: %d", _name, _id, _birth_year);
+        return String.format("%s - %s, born at %d", name, id, birthYear);
     }
 
     /**
@@ -36,6 +36,6 @@ public class Person implements Comparable<Person> {
      */
     @Override
     public int compareTo(Person other) {
-        return other._birth_year - _birth_year;
+        return other.birthYear - birthYear;
     }
 }
