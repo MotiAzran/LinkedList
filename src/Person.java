@@ -27,8 +27,7 @@ public class Person implements Comparable<Person> {
     }
 
     /**
-     * Compare between persons
-     * by their age
+     * Compare people by their age
      * @param other person to compare
      * @return 0 if the person at the same age,
      *         positive number if this person is older
