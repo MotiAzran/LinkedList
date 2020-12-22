@@ -27,7 +27,7 @@ public class Main {
         System.out.print("Strings: ");
         System.out.println(strings);
 
-        reverseList(strings);
+        LinkedListUtils.reverseList(strings);
 
         System.out.print("Reversed Strings: ");
         System.out.println(strings);
@@ -42,43 +42,6 @@ public class Main {
         System.out.print("People: ");
         System.out.println(people);
 
-        System.out.printf("The oldest person in the list is %s\n", max(people));
-    }
-
-    /**
-     * Reverse linked list
-     * @param list list to reverse
-     * @param <T> type of the list data
-     */
-    public static <T> void reverseList(LinkedList<T> list) {
-        T value;
-        try {
-            value = list.remove();
-        } catch (EmptyListException e) {
-            // The list is empty retrieve recursion
-            return;
-        }
-
-        reverseList(list);
-
-        list.add(value);
-    }
-
-    /**
-     * Get the max element in list
-     * @param list the list to search for the max element
-     * @param <T> the type of the list data
-     * @return the max element in the list
-     */
-    public static <T extends Comparable<T>> T max(LinkedList<T> list) {
-        T max = list.getHead().getData();
-        for (T data : list) {
-            if (max.compareTo(data) < 0) {
-                // The current element is bigger
-                max = data;
-            }
-        }
-
-        return max;
+        System.out.printf("The oldest person in the list is %s\n", LinkedListUtils.max(people));
     }
 }
